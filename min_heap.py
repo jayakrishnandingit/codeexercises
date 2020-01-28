@@ -1,5 +1,9 @@
 class MinHeap(object):
-    def __init__(self, arr=[]):
+    def __init__(self, arr=None):
+        if arr is None:
+            arr = []
+        else:
+            assert isinstance(arr, list)
         self.heap = arr
         for i in range(len(self.heap) - 1, -1, -1):
             self.heapify(i)
