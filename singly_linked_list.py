@@ -69,21 +69,6 @@ class LinkedList(object):
                 # data not found.
                 raise LinkedListError("Node with data %s not found." % data)
 
-    def reverse(self):
-        prev = None
-        current = self.head
-        nxt = None
-
-        if self.head is None:
-            raise LinkedListError("Empty list.")
-
-        while current:
-            nxt = current.next
-            current.next = prev
-            prev = current
-            current = nxt
-        self.head = prev
-
     def print_list(self):
         if self.head is None:
             print("List is empty.")
@@ -92,6 +77,22 @@ class LinkedList(object):
         while next_node:
             print("%s->" % next_node.data)
             next_node = next_node.next
+
+
+def reverse(linkedlist):
+    prev = None
+    current = linkedlist.head
+    nxt = None
+
+    if linkedlist.head is None:
+        raise LinkedListError("Empty list.")
+
+    while current:
+        nxt = current.next
+        current.next = prev
+        prev = current
+        current = nxt
+    linkedlist.head = prev
 
 
 if __name__ == '__main__':
@@ -110,6 +111,6 @@ if __name__ == '__main__':
     llist.push(9)
     print("added a new head.")
     llist.print_list()
-    llist.reverse()
+    reverse(llist)
     print("reversed the list.")
     llist.print_list()    
